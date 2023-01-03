@@ -1,19 +1,22 @@
-try {
-    console.log('Abri um arquivo');
-    console.log('Manipulei o arquivo e gerou erro');
-    console.log('fechei o arquivo');
-
-    try {
-        console.log(b);
-    } catch (e) {
-        console.log('Deu erro');
-    } finally {
-        console.log('também sou finally');
+function retornaHora(data) {
+    if (data && !(data instanceof Date)) {
+        throw new TypeError('Esperando instância de date.');
     }
 
+     if (!data) {
+        data = new Date();
+     }
 
-} catch (e) {
-    console.log('tratar o erro');
+     return data.toLocaleTimeString('pt-BR', {
+
+     });
+}
+try {
+const hora = retornaHora();
+console.log(hora);
+}   
+catch (e) {
+
 } finally {
-    console.log('FINALLY: Eu sempre sou executado');
+    console.log('Tenha um bom dia!')
 }
