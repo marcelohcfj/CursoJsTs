@@ -12,7 +12,6 @@ function criaPessoa(nome, sobrenome, a, p) {
             valor = valor.split(' ');
             this.nome = valor.shift();
             this.sobrenome = valor.join(' ');
-            console.log(valor);
         },
 
         fala(assunto) {
