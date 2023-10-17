@@ -1,0 +1,1 @@
+{"version":3,"file":"bundle.js","mappings":";;;;;AACA;;AAEAA,KAAK,CAAC,OAAO,CAAC,C","sources":["webpack://aula89/./src/index.js"],"sourcesContent":["\r\n// npm i --save-dev @babel/core @babel/cli @babel/presets-env babel-loader webpack webpack-cli regenerator-runtime core-js@2\r\n\r\nalert('11111');\r\n"],"names":["alert"],"sourceRoot":""}
