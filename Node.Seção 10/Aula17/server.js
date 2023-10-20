@@ -4,7 +4,7 @@ const express = require('express');
 const app = express();
 const mongoose = require('mongoose');
 
-mongoose.connect(process.env.CONNECTIONSTRING)
+mongoose.connect(process.env.CONNECTIONSTRING, {useNewUrlParser: true, useUnifiedTopology: true})
 .then(() => {
     app.emit('pronto');
 })
@@ -42,9 +42,7 @@ app.set('view engine', 'ejs')
 
 //Nossos Middlewares
 app.use(csrf());
-
- 
-app.use(meuMiddleware);
+app.use(meuMiddleware)
 app.use(checkCsfrError);
 app.use(routes);
 
