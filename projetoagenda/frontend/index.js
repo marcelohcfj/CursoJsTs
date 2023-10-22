@@ -1,5 +1,3 @@
-import 'core-js'
-import 'regenerator-runtime/runtime'
-
-import './Assets/css/style.css';
+import 'core-js/stable';
+import 'regenerator-runtime/runtime';
 
