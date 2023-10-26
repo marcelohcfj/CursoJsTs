@@ -1,7 +1,9 @@
+// eslint-disable-next-line import/no-extraneous-dependencies, quotes
 import { Router } from "express";
-import homeController from "../controllers/homeController";
+// eslint-disable-next-line quotes, import/newline-after-import
+import homeController from "../controllers/HomeController";
 const router = new Router();
 
-router.get('/', homeController.index)
+router.get('/', homeController.index);
 
 export default router;
