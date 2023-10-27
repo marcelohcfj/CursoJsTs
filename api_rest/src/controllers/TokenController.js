@@ -1,3 +1,5 @@
+/* eslint-disable import/no-extraneous-dependencies */
+/* eslint-disable import/order */
 /* eslint-disable no-unused-vars */
 import User from '../models/User';
 import jwt from 'jsonwebtoken';
