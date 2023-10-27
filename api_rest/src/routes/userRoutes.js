@@ -8,7 +8,7 @@ import loginRequired from "../middlewares/loginRequired";
 
 const router = new Router();
 
-router.get('/', userController.index);
+// router.get('/', userController.index);
 // router.get('/:id', userController.show);
 
 router.post('/', userController.store);
