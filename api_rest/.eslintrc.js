@@ -25,5 +25,6 @@ module.exports = {
     "no-console": "off",
     "class-methods-use-this": "off",
     "no-param-reassign": "off"
+    "camelcase": "off"
   },
 };
