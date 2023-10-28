@@ -1,5 +1,6 @@
 // eslint-disable-next-line import/no-extraneous-dependencies, no-unused-vars
 import Sequelize, { Model } from 'sequelize';
+import appConfig from '../config/appConfig';
 
 export default class Foto extends Model {
   static init(sequelize) {
@@ -22,6 +23,13 @@ export default class Foto extends Model {
           },
         },
       },
+
+      url: {
+        type: Sequelize.VIRTUAL,
+        get() {
+          return `${appConfig.url}/images/${this.getDataValue('filename')}`
+        }
+      }
     }, {
       sequelize,
       tablename: 'fotos',

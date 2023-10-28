@@ -3,8 +3,8 @@ module.exports = {
     id: {
       type: Sequelize.INTEGER,
       allowNull: false,
+      autoIncrement: true,
       primaryKey: true,
-      autoIncrement: 1,
     },
     originalname: {
       type: Sequelize.STRING,
@@ -18,10 +18,10 @@ module.exports = {
       type: Sequelize.INTEGER,
       allowNull: true,
       references: {
-        model: 'alunos,',
+        model: 'alunos',
         key: 'id',
       },
-      onDelete: 'CASCADE',
+      onDelete: 'SET NULL',
       onUpdate: 'CASCADE',
     },
     created_at: {

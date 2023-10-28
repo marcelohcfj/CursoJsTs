@@ -1,65 +1,66 @@
 // eslint-disable-next-line import/no-extraneous-dependencies, no-unused-vars
 import Sequelize, { Model } from 'sequelize';
+import Sequelize, { Model } from 'sequelize';
 
 export default class Aluno extends Model {
   static init(sequelize) {
     super.init({
       nome: {
         type: Sequelize.STRING,
-        dafaultValue: '',
+        defaultValue: '',
         validate: {
           len: {
-            args: [3, 100],
-            msg: 'Nome precisa ter entre 3 e 100 caracteres',
+            args: [3, 255],
+            msg: 'Nome precisa ter entre 3 e 255 caracteres.',
           },
         },
       },
       sobrenome: {
         type: Sequelize.STRING,
-        dafaultValue: '',
+        defaultValue: '',
         validate: {
           len: {
-            args: [3, 100],
-            msg: 'Sobrenome precisa ter entre 3 e 100 caracteres',
+            args: [3, 255],
+            msg: 'Sobrenome precisa ter entre 3 e 255 caracteres.',
           },
         },
       },
       email: {
         type: Sequelize.STRING,
-        dafaultValue: '',
+        defaultValue: '',
         unique: {
           msg: 'E-mail já existe',
         },
-        isEmail: {
-          len: {
+        validate: {
+          isEmail: {
             msg: 'E-mail inválido',
           },
         },
       },
       idade: {
         type: Sequelize.INTEGER,
-        dafaultValue: '',
+        defaultValue: '',
         validate: {
           isInt: {
-            msg: 'Idade precisa ser um numero inteiro',
+            msg: 'Idade precisa ser um número inteiro',
           },
         },
       },
       peso: {
         type: Sequelize.FLOAT,
-        dafaultValue: '',
+        defaultValue: '',
         validate: {
           isFloat: {
-            msg: 'Peso precisa ser um numero inteiro ou de ponto flutuante',
+            msg: 'Peso precisa ser um número inteiro ou de ponto flutuante',
           },
         },
       },
       altura: {
         type: Sequelize.FLOAT,
-        dafaultValue: '',
+        defaultValue: '',
         validate: {
           isFloat: {
-            msg: 'Altura precisa ser um numero inteiro ou de ponto flutuante',
+            msg: 'Altura precisa ser um número inteiro ou de ponto flutuante',
           },
         },
       },
@@ -67,5 +68,9 @@ export default class Aluno extends Model {
       sequelize,
     });
     return this;
+  }
+
+  static associate(models) {
+    this.hasMany(models.Foto, { foreignKey: 'aluno_id' });
   }
 }
