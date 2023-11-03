@@ -5,16 +5,31 @@ import { resolve } from 'path';
 
 dotenv.config();
 
-import './src/database';
+import './database';
 
 import express from 'express';
+import cors from 'cors';
+import helmet from 'helmet';
 
-import homeRoutes from './src/routes/homeRoutes';
-import userRoutes from './src/routes/userRoutes';
-import tokenRoutes from './src/routes/tokenRoutes';
-import alunoRoutes from './src/routes/AlunoRoutes';
-import fotoRoutes from './src/routes/fotoRoutes';
+import homeRoutes from './routes/homeRoutes';
+import userRoutes from './routes/userRoutes';
+import tokenRoutes from './routes/tokenRoutes';
+import alunoRoutes from './routes/AlunoRoutes';
+import fotoRoutes from './routes/fotoRoutes';
 
+const whiteList = [
+  'http://localhost:3001',
+];
+
+const corsOptions = {
+  origin: function (origin, callback) {
+    if(whiteList.indexOf(origin) !== -1 || !origin) {
+      callback(null, true);
+    } else {
+      callback(new Error('Not allowed by CORS'));
+    }
+  }
+};
 class App {
   constructor() {
     this.app = express();
@@ -23,6 +38,8 @@ class App {
   }
 
   middlewares() {
+    this.app.use(cors(corsOptions));
+    this.app.use(helmet());
     this.app.use(express.urlencoded({ extended: true }));
     this.app.use(express.json());
     this.app.use(express.static(resolve(__dirname, 'uploads')));
