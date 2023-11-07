@@ -12,15 +12,16 @@ export default function MyRoute({ component: Component, isClosed, ...rest }) {
       />
     );
   }
-
+  // eslint-disable-next-line react/jsx-props-no-spreading
   return <Route {...rest} component={Component} />;
 }
 
-MyRoute.propTypes = {
-  component: PropTypes.oneOfType.isRequired,
-  isClosed: PropTypes.bool,
-};
-
 MyRoute.defaultProps = {
   isClosed: false,
+};
+
+MyRoute.propTypes = {
+  component: PropTypes.oneOfType([PropTypes.element, PropTypes.func])
+    .isRequired,
+  isClosed: PropTypes.bool,
 };
