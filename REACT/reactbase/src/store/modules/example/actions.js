@@ -1,7 +1,19 @@
 import * as types from '../types';
 
-export function botao() {
+export function botaoRequest() {
   return {
-    type: types.BOTAO_CLICADO,
+    type: types.BOTAO_CLICADO_REQUEST,
+  };
+}
+
+export function botaoSuccess() {
+  return {
+    type: types.BOTAO_CLICADO_SUCCESS,
+  };
+}
+
+export function botaoFailure() {
+  return {
+    type: types.BOTAO_CLICADO_FAILURE,
   };
 }

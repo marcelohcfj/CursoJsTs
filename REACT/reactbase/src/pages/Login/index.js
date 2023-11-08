@@ -10,7 +10,7 @@ export default function Login() {
   function handleClick(e) {
     e.preventDefault();
 
-    dispatch(exampleActions.botao());
+    dispatch(exampleActions.botaoRequest());
   }
   return (
     <Container>
