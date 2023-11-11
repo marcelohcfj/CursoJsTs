@@ -2,21 +2,21 @@ import * as types from '../types';
 
 export function loginRequest(payload) {
   return {
-    type: types.BOTAO_CLICADO_REQUEST,
+    type: types.LOGIN_REQUEST,
     payload,
   };
 }
 
 export function loginSuccess(payload) {
   return {
-    type: types.BOTAO_CLICADO_SUCCESS,
+    type: types.LOGIN_SUCCESS,
     payload,
   };
 }
 
 export function loginFailure(payload) {
   return {
-    type: types.BOTAO_CLICADO_FAILURE,
+    type: types.LOGIN_FAILURE,
     payload,
   };
 }
