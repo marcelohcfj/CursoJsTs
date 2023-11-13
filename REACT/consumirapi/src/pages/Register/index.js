@@ -3,15 +3,25 @@ import React, { useState } from 'react';
 import { toast } from 'react-toastify';
 import { Container } from '../../styles/GlobalStyles';
 import { Form } from './styled';
-import { get } from 'lodash';
-import axios from 'axios';
-import history from '../../services/history';
+import { useSelector, useDispatch } from 'react-redux';
+import * as actions from '../../store/modules/auth/actions';
 
 export default function Register() {
+  const dispatch = useDispatch();
+  const id = useSelector(state => state.auth.user.id);
+  const nomeStored = useSelector(state => state.auth.user.nome);
+  const emailStored = useSelector(state => state.auth.user.email);
 
   const [nome, setNome] = useState('');
   const [email, setEmail] = useState('');
   const [password, setpassword] = useState('');
+
+  React.useEffect(() => {
+    if(!id) return;
+
+    setNome(nomeStored);
+    setEmail(emailStored);
+  }, [emailStored, id, nomeStored])
 
   async function handleSubmit(e) {
     e.preventDefault();
@@ -22,33 +32,20 @@ export default function Register() {
       toast.error('Campo nome deve ter entre 3 e 100 caracteres')
     }
 
-    if(password. length < 6 || password.length > 100) {
+    if(!id && (password. length < 6 || password.length > 100)) {
       formErrors = true;
       toast.error('Campo senha deve ter entre 6 e 100 caracteres')
     }
 
     if(formErrors) return;
 
-    try {
-      await axios.post("http://projectmarcee.site/users/", {
-        nome,
-        password,
-        email,
-      });
-
-      toast.success('Usuário cadastrado com sucesso!');
-      history.push('/login');
-    } catch(err) {
-      const errors = get(err, 'response.data.errors', []);
-
-      errors.map(error => toast.error(error));
-    }
+    dispatch(actions.registerRequest({ nome, email, password, id }));
 
   }
 
   return (
     <Container>
-      <h1>Crie sua conta </h1>
+      <h1>{id ? 'Editar dados' :'Crie sua conta'}</h1>
       <Form onSubmit={handleSubmit}>
         <label htmlFor="nome">
           Nome:
@@ -75,7 +72,7 @@ export default function Register() {
           placeholder="Sua Senha"></input>
         </label>
 
-        <button type="sumit">Criar minha conta</button>
+        <button type="sumit">{id ? 'Salvar' :'Criar conta'}</button>
       </Form>
     </Container>
   );
