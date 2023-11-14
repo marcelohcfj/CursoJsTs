@@ -8,6 +8,7 @@ import * as actions from '../../store/modules/auth/actions';
 
 export default function Register() {
   const dispatch = useDispatch();
+
   const id = useSelector(state => state.auth.user.id);
   const nomeStored = useSelector(state => state.auth.user.nome);
   const emailStored = useSelector(state => state.auth.user.email);
@@ -32,7 +33,7 @@ export default function Register() {
       toast.error('Campo nome deve ter entre 3 e 100 caracteres')
     }
 
-    if(!id && (password. length < 6 || password.length > 100)) {
+    if(!id && (password.length < 6 || password.length > 100)) {
       formErrors = true;
       toast.error('Campo senha deve ter entre 6 e 100 caracteres')
     }
@@ -40,7 +41,6 @@ export default function Register() {
     if(formErrors) return;
 
     dispatch(actions.registerRequest({ nome, email, password, id }));
-
   }
 
   return (
