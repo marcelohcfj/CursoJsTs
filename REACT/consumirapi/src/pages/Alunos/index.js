@@ -4,7 +4,7 @@ import { get } from 'lodash'
 import { Link } from 'react-router-dom';
 import { Container } from '../../styles/GlobalStyles';
 import { FaUserCircle, FaEdit, FaWindowClose, FaExclamation } from 'react-icons/fa';
-import { AlunoContainer, ProfilePicture } from './styled';
+import { AlunoContainer, ProfilePicture, NovoAluno } from './styled';
 import axios from '../../services/axios';
 import { toast } from 'react-toastify';
 
@@ -48,6 +48,9 @@ export default function Alunos() {
   return (
     <Container>
       <h1>Alunos</h1>
+
+      <NovoAluno to="/aluno/">Novo Aluno</NovoAluno>
+
       <AlunoContainer>
         {alunos.map((aluno) => (
           <div key={String(aluno.id)}>
