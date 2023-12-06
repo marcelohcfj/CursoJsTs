@@ -1,10 +1,19 @@
-export class Empresa {
-  public readonly nome: string;
+export class Pessoa {
+  constructor(
+    private nome: string,
+    private sobrenome: string,
+    private idade: number,
+    private cpf: string,
+  ) {}
 
-  constructor(nome: string) {
-    this.nome = nome;
+  getNome(): string {
+    return this.nome;
+  }
+
+  getCpf() {
+    return this.cpf.replace(/\D/g, '');
   }
 }
 
-const empresa1  = new Empresa('Udemy');
-console.log(empresa1);
+const pessoa1 = new Pessoa('Marcelo', 'Henrique', 27, '437.914.968-40');
+console.log(pessoa1.getCpf());
