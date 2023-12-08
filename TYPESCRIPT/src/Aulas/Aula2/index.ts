@@ -12,7 +12,7 @@ export class Database {
   }
 
   static getDatabase(host: string, user: string, password: string): Database {
-    if (Database.database) return Database.database
+    if (Database.database) return Database.database;
     Database.database = new Database(host, user, password);
     return Database.database;
   }
