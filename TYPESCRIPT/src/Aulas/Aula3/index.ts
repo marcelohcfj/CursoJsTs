@@ -25,4 +25,3 @@ const monstro = new Monstro('Stregnar', 70, 1000);
 guerreiro.atacar(monstro);
 guerreiro.atacar(monstro);
 guerreiro.atacar(monstro);
-
