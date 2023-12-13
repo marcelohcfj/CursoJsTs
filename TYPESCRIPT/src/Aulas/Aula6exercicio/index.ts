@@ -44,8 +44,24 @@ const votation1 = new Votation('Qual a sua linguagem de programação favorita?'
 votation1.addVotationOption({ option: 'Python', numberOfvotes: 0 });
 votation1.addVotationOption({ option: 'JavaScript', numberOfvotes: 0 });
 votation1.addVotationOption({ option: 'TypeScript', numberOfvotes: 0 });
+votation1.vote(1);
+votation1.vote(1);
+votation1.vote(1);
+votation1.vote(0);
+votation1.vote(2);
+
+const votation2 = new Votation('Qual a sua cor favorita?');
+votation2.addVotationOption({ option: 'Verde', numberOfvotes: 0 });
+votation2.addVotationOption({ option: 'Vermelho', numberOfvotes: 0 });
+votation2.addVotationOption({ option: 'Azul', numberOfvotes: 0 });
+votation2.vote(0);
+votation2.vote(1);
+votation2.vote(1);
+votation2.vote(2);
+votation2.vote(2);
 
 const votationApp = new VotationApp();
 votationApp.addVotation(votation1);
+votationApp.addVotation(votation2);
 
 votationApp.showVotations();
