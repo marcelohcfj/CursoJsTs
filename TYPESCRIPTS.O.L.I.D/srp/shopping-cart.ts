@@ -54,7 +54,6 @@ shoppingCart.addItem({ name: 'Camiseta', price: 49.9 });
 shoppingCart.addItem({ name: 'Bermuda', price: 39.9 });
 shoppingCart.addItem({ name: 'Bone', price: 24.9 });
 
-
 console.log(shoppingCart.items);
 console.log(shoppingCart.total());
 shoppingCart.checkOut();
