@@ -17,16 +17,16 @@ export class ShoppingCart {
   }
 
   total(): number {
-    return + this._items.reduce((total, next) => total + next.price, 0).toFixed(2);
+    return +this._items.reduce((total, next) => total + next.price, 0).toFixed(2);
   }
 
   checkOut(): void {
     if (this.isEmpty()) {
-      console.log('Seu carrinho esta vazio!');
+      console.log('Seu carrinho esta vazio');
       return;
     }
     this.orderStatus = 'closed';
-    this.sendMessage('Seu pedido foi recebido!');
+    this.sendMessage('Seu pedido foi recebido');
     this.saveOrder();
     this.clear();
   }
@@ -50,7 +50,7 @@ export class ShoppingCart {
 }
 
 const shoppingCart = new ShoppingCart();
-shoppingCart.addItem({ name: 'Camiseta', price: 49.5 });
+shoppingCart.addItem({ name: 'Camiseta', price: 49.9 });
 shoppingCart.addItem({ name: 'Bermuda', price: 39.9 });
 shoppingCart.addItem({ name: 'Bone', price: 24.9 });
 
